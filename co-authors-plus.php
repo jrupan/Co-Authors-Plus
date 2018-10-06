@@ -358,6 +358,12 @@ class CoAuthors_Plus {
 					$coauthors[] = $coauthor;
 				}
 			}
+
+			// if post_author is 0 and guest author available, show guest author.
+			if ( empty( $coauthors ) ) {
+				$coauthors = get_coauthors();
+			}
+
 			// If the above block was skipped, or if it failed to find a guest author, use the current
 			// logged in user, so long as force_guest_authors is false. If force_guest_authors = true, we are
 			// OK with having an empty authoring box.
